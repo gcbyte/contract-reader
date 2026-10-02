@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     anthropic_api_key: str | None = None
     openai_api_key: str | None = None
     gemini_api_key: str | None = None
+    google_client_id: str | None = None
 
     class Config:
         env_file = ".env"

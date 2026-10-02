@@ -8,3 +8,25 @@ body {
   background-color: white;
   color: #111827;
 }
+
+.google-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.google-divider::before,
+.google-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.google-divider span {
+  color: #6b7280;
+  font-size: 14px;
+  white-space: nowrap;
+}

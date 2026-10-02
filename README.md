@@ -1,8 +1,8 @@
-# Contract Reader
+# SignWyz
 
-Contract Reader is a web application that uses AI to help users understand legal documents such as contracts, terms and conditions, and privacy policies.
+SignWyz is a web application that uses AI to help users understand legal documents such as contracts, terms and conditions, and privacy policies.
 
-Instead of reading a document and only looking for possible risks, Contract Reader also highlights favorable terms and benefits that a user may gain from the document.
+Instead of reading a document and only looking for possible risks, SignWyz also highlights favorable terms and benefits that a user may gain from the document.
 
 ## Features
 
@@ -31,7 +31,7 @@ Instead of reading a document and only looking for possible risks, Contract Read
 1. Create an account or sign in.
 2. Upload or provide a document for analysis.
 3. Select the type of document.
-4. Contract Reader sends the document for AI analysis.
+4. SignWyz sends the document for AI analysis.
 5. The application identifies potential risks, obligations, and favorable terms.
 6. The results are presented in an easy-to-read format.
 
@@ -60,7 +60,7 @@ Instead of reading a document and only looking for possible risks, Contract Read
 ## Project Structure
 
 ```text
-contract_reader/
+SignWyz/
 ├── backend/
 │   ├── app/
 │   │   ├── routers/
@@ -116,8 +116,8 @@ Do not commit `.env` or API keys to GitHub.
 
 ## Important Note
 
-Contract Reader is an AI-assisted document analysis tool. Its findings are intended to help users understand documents and identify areas that may deserve closer attention. The analysis is not a substitute for professional legal advice.
+SignWyz is an AI-assisted document analysis tool. Its findings are intended to help users understand documents and identify areas that may deserve closer attention. The analysis is not a substitute for professional legal advice.
 
 ## Current Status
 
-Contract Reader is currently under active development.
+SignWyz is currently under active development.

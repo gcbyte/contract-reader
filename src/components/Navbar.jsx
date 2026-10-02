@@ -18,7 +18,7 @@ function Navbar({ darkMode, setDarkMode, isAuthenticated, onLogout }) {
   return (
     <nav className="navbar">
       <Link to="/" className="logo" onClick={closeMobile}>
-        Contract Reader
+        SignWyz
       </Link>
 
       <button

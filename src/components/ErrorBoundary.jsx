@@ -11,7 +11,6 @@ class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    // TODO: send this to an error-tracking service (e.g. Sentry) once one exists.
     console.error("Uncaught error:", error, errorInfo)
   }
 

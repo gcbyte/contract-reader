@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { Eye, EyeOff } from "lucide-react"
+import { GoogleLogin } from "@react-oauth/google"
 import { apiRequest } from "../api"
 
 function SignIn({ onAuthSuccess }) {
@@ -47,7 +48,7 @@ function SignIn({ onAuthSuccess }) {
         <div className="signin-header">
           <p className="signin-label">WELCOME BACK</p>
 
-          <h1>Sign in to Contract Reader.</h1>
+          <h1>Sign in to SignWyz.</h1>
 
           <p>
             Sign in to continue analyzing your contracts
@@ -107,6 +108,34 @@ function SignIn({ onAuthSuccess }) {
           <button type="submit" className="signin-button" disabled={isSubmitting}>
             {isSubmitting ? "Signing in..." : "Sign In"}
           </button>
+          
+          <div className="google-divider">
+  <span>or</span>
+</div>
+
+<GoogleLogin
+  onSuccess={async (credentialResponse) => {
+    try {
+      setError("")
+
+      const data = await apiRequest("/auth/google", {
+        method: "POST",
+        body: JSON.stringify({
+          credential: credentialResponse.credential,
+        }),
+      })
+
+      localStorage.setItem("token", data.access_token)
+      onAuthSuccess?.()
+      navigate("/dashboard")
+    } catch (err) {
+      setError(err.message)
+    }
+  }}
+  onError={() => {
+    setError("Google sign-in failed. Please try again.")
+  }}
+/>
 
         </form>
 

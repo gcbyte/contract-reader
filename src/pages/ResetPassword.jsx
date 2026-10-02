@@ -91,7 +91,7 @@ function ResetPassword() {
           </h1>
 
           <p>
-            Enter a new password for your Contract Reader account.
+            Enter a new password for your SignWyz account.
           </p>
 
         </div>

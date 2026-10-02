@@ -3,6 +3,8 @@ from datetime import datetime, timedelta
 
 import bcrypt
 from jose import jwt, JWTError
+from google.oauth2 import id_token
+from google.auth.transport import requests
 
 from .config import settings
 
@@ -38,3 +40,16 @@ def decode_access_token(token: str) -> str | None:
 def generate_reset_token() -> str:
     # URL-safe, unguessable token for password reset links.
     return secrets.token_urlsafe(32)
+
+def verify_google_token(token: str) -> dict:
+    try:
+        idinfo = id_token.verify_oauth2_token(
+            token,
+            requests.Request(),
+            settings.google_client_id,
+        )
+
+        return idinfo
+
+    except ValueError:
+        raise ValueError("Invalid Google token.")

@@ -1,3 +1,4 @@
+import secrets
 from datetime import datetime, timedelta
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -11,9 +12,14 @@ from ..security import (
     generate_reset_token,
     hash_password,
     verify_password,
+    verify_google_token,
 )
+from pydantic import BaseModel
 
 router = APIRouter(prefix="/auth", tags=["auth"])
+
+class GoogleSignInRequest(BaseModel):
+    credential: str
 
 
 @router.post("/signup", response_model=schemas.TokenResponse)
@@ -105,3 +111,56 @@ def reset_password(payload: schemas.ResetPasswordRequest, db: Session = Depends(
     db.commit()
 
     return {"message": "Password has been reset. You can now sign in."}
+
+@router.post("/google", response_model=schemas.TokenResponse)
+def google_sign_in(
+    payload: GoogleSignInRequest,
+    db: Session = Depends(get_db),
+):
+    try:
+        google_user = verify_google_token(payload.credential)
+    except ValueError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid Google authentication.",
+        )
+
+    google_email = google_user.get("email")
+    first_name = google_user.get("given_name", "")
+    last_name = google_user.get("family_name", "")
+
+    if not google_email:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Google account email could not be verified.",
+        )
+
+    if not google_user.get("email_verified"):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Your Google email address is not verified.",
+        )
+
+    user = (
+        db.query(models.User)
+        .filter(models.User.email == google_email)
+        .first()
+    )
+
+    if not user:
+        user = models.User(
+            first_name=first_name or "Google",
+            last_name=last_name or "User",
+            email=google_email,
+            hashed_password=hash_password(
+                secrets.token_urlsafe(32)
+            ),
+        )
+
+        db.add(user)
+        db.commit()
+        db.refresh(user)
+
+    token = create_access_token(subject=user.id)
+
+    return schemas.TokenResponse(access_token=token)

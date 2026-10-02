@@ -18,7 +18,7 @@ function LandingPage() {
         <p className="hero-description">
           Analyze contracts and legal documents to identify
           possible risks, obligations, and clauses that deserve
-          a closer look.
+          a closer look as well as the benefits you stand to gain.
         </p>
 
         <button className="hero-button"
@@ -41,7 +41,7 @@ function LandingPage() {
 
           <p>
             Upload a document or paste your contract text
-            directly into Contract Reader.
+            directly into SignWyz.
           </p>
         </div>
 
@@ -62,12 +62,13 @@ function LandingPage() {
         <div className="feature-card">
           <span className="feature-number">03</span>
 
-          <h3>Risk Assessment</h3>
+          <h3>Benefits & Risk Assessment</h3>
 
           <p>
-            Get a clear overview of possible
-            <strong> High, Medium, and Low </strong>
-            risks found in your document.
+            Get a clear overview of the
+            <strong> benefits </strong>
+            and potential risks in your document, with risks categorized as 
+            <strong> High, Medium, and Low</strong>
           </p>
         </div>
 
@@ -87,7 +88,7 @@ function LandingPage() {
           </h2>
 
           <p>
-            Contract Reader simplifies the process of reviewing
+            SignWyz simplifies the process of reviewing
             complex legal documents.
           </p>
         </div>
@@ -127,7 +128,7 @@ function LandingPage() {
 
             <p>
               Our AI analyzes the document and presents possible
-              risks, important clauses, and explanations in
+              risks, important clauses, benefits and explanations in
               plain language.
             </p>
           </div>
@@ -140,7 +141,7 @@ function LandingPage() {
       <section id="about" className="about-section">
 
   <div className="section-heading">
-    <p className="section-label">ABOUT CONTRACT READER</p>
+    <p className="section-label">ABOUT SIGNWYZ</p>
 
     <h2>
       Understand before
@@ -149,10 +150,11 @@ function LandingPage() {
     </h2>
 
     <p>
-      Contract Reader is designed to make complex legal
+      SignWyz is designed to make complex legal
       documents easier to understand by highlighting
       possible risks, important obligations, and clauses
-      that deserve your attention and a closer look.
+      that deserve your attention and a closer look as well
+      what you stand to gain.
     </p>
   </div>
 
@@ -162,7 +164,7 @@ function LandingPage() {
       <footer className="footer">
         <div className="footer-content">
           <div>
-            <h3>Contract Reader</h3>
+            <h3>SignWyz</h3>
             <p>
               Understand your contracts before you sign them.
             </p>
@@ -176,8 +178,8 @@ function LandingPage() {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Contract Reader. All rights reserved.</p>
-          <p>Contract Reader provides information for review and is not legal advice.</p>
+          <p>&copy; {new Date().getFullYear()} SignWyz. All rights reserved.</p>
+          <p>SignWyz provides information for review and is not legal advice.</p>
         </div>
       </footer>
 
