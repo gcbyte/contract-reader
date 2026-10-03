@@ -23,7 +23,9 @@ function ProtectedRoute({ isAuthenticated, children }) {
 }
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark"
+  })
   const [isAuthenticated, setIsAuthenticated] = useState(getStoredAuth)
   const location = useLocation()
 
@@ -33,6 +35,10 @@ function App() {
     window.addEventListener("storage", handleStorage)
     return () => window.removeEventListener("storage", handleStorage)
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem("theme", darkMode ? "dark" : "light")
+  }, [darkMode])
 
   const handleLogout = () => {
     localStorage.removeItem("token")

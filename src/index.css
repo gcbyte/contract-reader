@@ -30,3 +30,9 @@ body {
   font-size: 14px;
   white-space: nowrap;
 }
+
+.navbar-logo {
+  width: 50px;
+  height: auto;
+  display: block;
+}

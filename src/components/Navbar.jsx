@@ -18,7 +18,11 @@ function Navbar({ darkMode, setDarkMode, isAuthenticated, onLogout }) {
   return (
     <nav className="navbar">
       <Link to="/" className="logo" onClick={closeMobile}>
-        SignWyz
+      <img
+       src="/signwyz-logo.png"
+       alt="SignWyz"
+       className="navbar-logo"
+      />
       </Link>
 
       <button
